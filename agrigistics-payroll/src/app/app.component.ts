@@ -3,11 +3,12 @@ import { RouterOutlet } from '@angular/router';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { PayrollStore } from './state/payroll.store';
 import { PayrollTableComponent } from './components/payroll-table/payroll-table.component';
+import { EmployeeInfoPanelComponent } from './components/employee-info-panel/employee-info-panel.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgIf, AsyncPipe, PayrollTableComponent],
+  imports: [RouterOutlet, NgIf, AsyncPipe, PayrollTableComponent, EmployeeInfoPanelComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
