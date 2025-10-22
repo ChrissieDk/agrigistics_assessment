@@ -1,14 +1,24 @@
-<main class="p-6">
-  <div class="max-w-7xl mx-auto">
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-      <!-- Employee Info Panel -->
-      <div class="lg:col-span-1">
+<main class="px-6 py-6">
+  <div class="w-full mx-auto">
+    <div class="flex items-start gap-3">
+      <!-- Left Sidebar (~6%) -->
+      <div class="basis-[6%] shrink-0">
+        <app-left-sidebar />
+      </div>
+
+      <!-- Employee Panel (~22%) -->
+      <div class="basis-[22%] shrink-0">
         <app-employee-info-panel />
       </div>
-      
-      <!-- Payroll Table -->
-      <div class="lg:col-span-2">
+
+      <!-- Table (fills remaining) -->
+      <div class="flex-1 min-w-0">
         <app-payroll-table />
+      </div>
+
+      <!-- Right Sidebar (~6%) -->
+      <div class="basis-[6%] shrink-0">
+        <app-right-sidebar />
       </div>
     </div>
   </div>
