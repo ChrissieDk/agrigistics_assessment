@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html { @apply h-full bg-surface text-slate-900; }
+  body { @apply min-h-full font-sans antialiased; }
+}
+
+@layer components {
+  .card { @apply bg-white rounded-lg shadow-card; }
+  .btn-primary { @apply inline-flex items-center gap-2 rounded-lg bg-brand text-white px-4 py-2 font-medium hover:bg-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-300; }
+  .chip { @apply inline-flex items-center rounded-full bg-slate-100 px-2.5 py-0.5 text-xs text-slate-700; }
+}
