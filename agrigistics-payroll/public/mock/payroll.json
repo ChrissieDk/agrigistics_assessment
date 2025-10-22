@@ -13,14 +13,14 @@
     "currency": "ZAR"
   },
   "items": [
-    { "id": "i-1", "name": "Drafting", "description": "Lorem ipsum dolor", "group": "Group 1", "quantity": 3, "rate": 20, "currency": "ZAR" },
-    { "id": "i-2", "name": "Driving", "description": null, "group": "Group 1", "quantity": 4, "rate": null, "currency": "ZAR" },
-    { "id": "i-3", "name": "Cutting", "description": null, "group": "Group 2", "quantity": 6, "rate": null, "currency": "ZAR" },
-    { "id": "i-4", "name": "Task 1", "description": "Lorem ipsum dolor", "group": "Group 3", "quantity": 3, "rate": 400, "currency": "ZAR" },
-    { "id": "i-5", "name": "Task 2", "description": "-", "group": "Group 2", "quantity": 4, "rate": 599, "currency": "ZAR" },
-    { "id": "i-6", "name": "Task 3", "description": "Lorem ipsum dolor", "group": "Group 3", "quantity": 6, "rate": 60, "currency": "ZAR" },
-    { "id": "i-7", "name": "Task 4", "description": "Lorem ipsum dolor", "group": "Group 2", "quantity": 3, "rate": 80, "currency": "ZAR" },
-    { "id": "i-8", "name": "Task 5", "description": "Lorem ipsum dolor", "group": "Group 1", "quantity": 4, "rate": 100, "currency": "ZAR" }
+    { "id": "i-1", "name": "Drafting", "description": "Lorem ipsum dolor", "group": "Group 1", "quantity": 3, "rate": 20, "currency": "ZAR", "hasWarning": true },
+    { "id": "i-2", "name": "Driving", "description": null, "group": "Group 1", "quantity": 4, "rate": null, "currency": "ZAR", "hasWarning": false },
+    { "id": "i-3", "name": "Cutting", "description": null, "group": "Group 2", "quantity": 6, "rate": null, "currency": "ZAR", "hasWarning": true },
+    { "id": "i-4", "name": "Task 1", "description": "Lorem ipsum dolor", "group": "Group 3", "quantity": 3, "rate": 400, "currency": "ZAR", "hasWarning": false },
+    { "id": "i-5", "name": "Task 2", "description": "-", "group": "Group 2", "quantity": 4, "rate": 599, "currency": "ZAR", "hasWarning": false },
+    { "id": "i-6", "name": "Task 3", "description": "Lorem ipsum dolor", "group": "Group 3", "quantity": 6, "rate": 60, "currency": "ZAR", "hasWarning": false },
+    { "id": "i-7", "name": "Task 4", "description": "Lorem ipsum dolor", "group": "Group 2", "quantity": 3, "rate": 80, "currency": "ZAR", "hasWarning": true },
+    { "id": "i-8", "name": "Task 5", "description": "Lorem ipsum dolor", "group": "Group 1", "quantity": 4, "rate": 100, "currency": "ZAR", "hasWarning": false }
   ]
 }
 

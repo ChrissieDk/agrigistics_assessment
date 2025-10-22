@@ -1,0 +1,90 @@
+<div class="bg-white rounded-xl shadow-card border border-slate-200 p-4">
+  <!-- Header with compact search and buttons -->
+  <div class="flex items-center justify-between gap-4 mb-4">
+    <div class="flex items-center gap-2 rounded-full border border-slate-300 bg-slate-100 px-3 py-2 w-64">
+      <svg class="h-4 w-4 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input
+        type="text"
+        class="w-full bg-transparent text-sm outline-none placeholder:text-slate-500"
+        placeholder="Search"
+        [value]="query()"
+        (input)="query.set($any($event.target).value)"
+      />
+    </div>
+    <div class="flex items-center gap-2">
+      <button type="button" class="px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand-300">
+        Secondary
+      </button>
+      <button type="button" class="px-4 py-2 text-sm font-medium text-white bg-brand rounded-lg hover:bg-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-300">
+        Primary
+      </button>
+    </div>
+  </div>
+
+  <div class="overflow-hidden rounded-lg border border-slate-200">
+    <table class="w-full table-fixed text-sm">
+      <colgroup>
+        <col class="w-8" />
+        <col class="w-[26%]" />
+        <col />
+        <col class="w-[16%]" />
+        <col class="w-[12%]" />
+        <col class="w-[16%]" />
+        <col class="w-[16%]" />
+      </colgroup>
+      <thead class="bg-slate-50">
+        <tr class="text-left text-xs uppercase tracking-wide text-slate-500">
+          <th class="px-2 py-3">&nbsp;</th>
+          <th class="px-4 py-3 select-none cursor-pointer group" (click)="toggleSort('name')">
+            <span class="inline-flex items-center gap-1">Name
+              <svg class="h-3 w-3 transition-opacity" [class.opacity-100]="sortKey()==='name'" [class.opacity-30]="sortKey()!=='name'" [class.rotate-180]="sortKey()==='name' && sortDir()==='desc'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </span>
+          </th>
+          <th class="px-4 py-3 select-none cursor-pointer" (click)="toggleSort('description')">
+            <span class="inline-flex items-center gap-1">Description
+              <svg class="h-3 w-3 transition-opacity" [class.opacity-100]="sortKey()==='description'" [class.opacity-30]="sortKey()!=='description'" [class.rotate-180]="sortKey()==='description' && sortDir()==='desc'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </span>
+          </th>
+          <th class="px-4 py-3 select-none cursor-pointer" (click)="toggleSort('group')">
+            <span class="inline-flex items-center gap-1">Type
+              <svg class="h-3 w-3 transition-opacity" [class.opacity-100]="sortKey()==='group'" [class.opacity-30]="sortKey()!=='group'" [class.rotate-180]="sortKey()==='group' && sortDir()==='desc'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </span>
+          </th>
+          <th class="px-4 py-3 text-right select-none cursor-pointer" (click)="toggleSort('quantity')">
+            <span class="inline-flex items-center gap-1">Quantity
+              <svg class="h-3 w-3 transition-opacity" [class.opacity-100]="sortKey()==='quantity'" [class.opacity-30]="sortKey()!=='quantity'" [class.rotate-180]="sortKey()==='quantity' && sortDir()==='desc'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </span>
+          </th>
+          <th class="px-4 py-3 text-right select-none cursor-pointer" (click)="toggleSort('rate')">
+            <span class="inline-flex items-center gap-1">Rate
+              <svg class="h-3 w-3 transition-opacity" [class.opacity-100]="sortKey()==='rate'" [class.opacity-30]="sortKey()!=='rate'" [class.rotate-180]="sortKey()==='rate' && sortDir()==='desc'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </span>
+          </th>
+          <th class="px-4 py-3 text-right">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-200">
+        <tr *ngFor="let item of filteredSorted()" class="hover:bg-slate-50">
+          <td class="px-2 py-3 text-center">
+            <img *ngIf="item.hasWarning" src="/error.png" alt="Warning" class="h-3 w-3 mx-auto" />
+          </td>
+          <td class="px-4 py-3">{{ item.name }}</td>
+          <td class="px-4 py-3 text-slate-600">{{ item.description || '--' }}</td>
+          <td class="px-4 py-3 text-slate-600">{{ item.group }}</td>
+          <td class="px-4 py-3 text-right">{{ item.quantity }}</td>
+          <td class="px-4 py-3 text-right">
+            <ng-container *ngIf="item.rate !== null; else notAvailable">
+              {{ item.rate | currency:'ZAR':'symbol':'1.2-2' }}
+            </ng-container>
+            <ng-template #notAvailable>--</ng-template>
+          </td>
+          <td class="px-4 py-3 text-right">
+            <button type="button" class="text-sky-600 hover:text-sky-700 font-medium">Primary Action</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
