@@ -1,7 +1,7 @@
-<div class="bg-white rounded-2xl shadow-card border border-slate-200 p-5">
+<div class="bg-white rounded-2xl shadow-card border border-slate-200 p-5 h-full">
   <!-- Header: Employee Name / Meta -->
   <div class="mb-4">
-    <div class="text-2xl font-semibold text-slate-900 truncate">{{ employee()?.name }}</div>
+    <div class="text-lg font-semibold text-slate-900 truncate">{{ employee()?.name }}</div>
     <div class="mt-3 grid grid-cols-2 gap-6">
       <div>
         <div class="text-xs text-slate-500">No.</div>
@@ -14,80 +14,56 @@
     </div>
   </div>
 
-  <h3 class="text-base font-semibold text-slate-900 mb-3">Overview</h3>
+  <h3 class="text-sm font-semibold text-slate-900 mb-3">Overview</h3>
 
   <!-- Big totals card -->
   <div class="rounded-xl border border-slate-200">
-    <div class="grid grid-cols-12 items-center gap-3 p-4">
-      <div class="col-span-2 flex justify-center">
-        <div class="h-10 w-10 rounded-lg bg-lime-200/80 flex items-center justify-center">
-          <img src="/total_earnings.png" alt="Total Earnings" class="h-6 w-6" />
-        </div>
-      </div>
-      <div class="col-span-10 flex items-center justify-between">
-        <div class="text-sm text-slate-600">Total Earnings</div>
-        <div class="text-lg font-semibold text-slate-900">{{ summary()?.totalEarnings | currency:'ZAR':'symbol':'1.2-2' }}</div>
+    <div class="flex items-center justify-between p-3">
+      <img src="/total_earnings.png" alt="Total Earnings" class="h-6 w-6" />
+      <div class="flex flex-col items-end">
+        <div class="text-xs text-slate-600">Total Earnings</div>
+        <div class="text-sm font-semibold text-slate-900">R {{ summary()?.totalEarnings | number:'1.2-2' }}</div>
       </div>
     </div>
-    <div class="grid grid-cols-12 items-center gap-3 p-4 border-t border-slate-200">
-      <div class="col-span-2 flex justify-center">
-        <div class="h-10 w-10 rounded-lg bg-orange-200/80 flex items-center justify-center">
-          <img src="/total_deductions.png" alt="Total Deductions" class="h-6 w-6" />
-        </div>
-      </div>
-      <div class="col-span-10 flex items-center justify-between">
-        <div class="text-sm text-slate-600">Total Deductions</div>
-        <div class="text-lg font-semibold text-slate-900">{{ summary()?.totalDeductions | currency:'ZAR':'symbol':'1.2-2' }}</div>
+    <div class="flex items-center justify-between p-3 border-t border-slate-200">
+      <img src="/total_deductions.png" alt="Total Deductions" class="h-6 w-6" />
+      <div class="flex flex-col items-end">
+        <div class="text-xs text-slate-600">Total Deductions</div>
+        <div class="text-sm font-semibold text-slate-900">R {{ summary()?.totalDeductions | number:'1.2-2' }}</div>
       </div>
     </div>
-    <div class="grid grid-cols-12 items-center gap-3 p-4 border-t border-slate-200">
-      <div class="col-span-2 flex justify-center">
-        <div class="h-10 w-10 rounded-lg bg-teal-200/80 flex items-center justify-center">
-          <img src="/net_total.png" alt="Net total" class="h-6 w-6" />
-        </div>
-      </div>
-      <div class="col-span-10 flex items-center justify-between">
-        <div class="text-sm text-slate-600">Net total</div>
-        <div class="text-lg font-semibold text-slate-900">{{ summary()?.netTotal | currency:'ZAR':'symbol':'1.2-2' }}</div>
+    <div class="flex items-center justify-between p-3 border-t border-slate-200">
+      <img src="/net_total.png" alt="Net total" class="h-6 w-6" />
+      <div class="flex flex-col items-end">
+        <div class="text-xs text-slate-600">Net total</div>
+        <div class="text-sm font-semibold text-slate-900">R {{ summary()?.netTotal | number:'1.2-2' }}</div>
       </div>
     </div>
   </div>
 
   <!-- Contributions -->
   <div class="mt-4 rounded-xl border border-slate-200">
-    <div class="grid grid-cols-12 items-center gap-3 p-4">
-      <div class="col-span-2 flex justify-center">
-        <div class="h-10 w-10 rounded-lg bg-lime-200/80 flex items-center justify-center">
-          <img src="/uif.png" alt="UIF" class="h-6 w-6" />
-        </div>
-      </div>
-      <div class="col-span-10 flex items-center justify-between">
+    <div class="flex items-center justify-between p-3">
+      <img src="/uif.png" alt="UIF" class="h-6 w-6" />
+      <div class="flex flex-col items-end">
         <div class="text-xs uppercase tracking-wide text-slate-500">UIF</div>
-        <div class="text-lg font-semibold text-slate-900">{{ summary()?.contributions?.uif | currency:'ZAR':'symbol':'1.2-2' }}</div>
+        <div class="text-sm font-semibold text-slate-900">R {{ summary()?.contributions?.uif | number:'1.2-2' }}</div>
       </div>
     </div>
 
-    <div class="grid grid-cols-12 items-center gap-3 p-4 border-t border-slate-200">
-      <div class="col-span-2 flex justify-center">
-        <div class="h-10 w-10 rounded-lg bg-lime-200/80 flex items-center justify-center">
-          <img src="/paye.png" alt="PAYE" class="h-6 w-6" />
-        </div>
-      </div>
-      <div class="col-span-10 flex items-center justify-between">
+    <div class="flex items-center justify-between p-3 border-t border-slate-200">
+      <img src="/paye.png" alt="PAYE" class="h-6 w-6" />
+      <div class="flex flex-col items-end">
         <div class="text-xs uppercase tracking-wide text-slate-500">PAYE</div>
-        <div class="text-lg font-semibold text-slate-900">{{ summary()?.contributions?.paye | currency:'ZAR':'symbol':'1.2-2' }}</div>
+        <div class="text-sm font-semibold text-slate-900">R {{ summary()?.contributions?.paye | number:'1.2-2' }}</div>
       </div>
     </div>
 
-    <div class="grid grid-cols-12 items-center gap-3 p-4 border-t border-slate-200">
-      <div class="col-span-2 flex justify-center">
-        <div class="h-10 w-10 rounded-lg bg-lime-200/80 flex items-center justify-center">
-          <img src="/total.png" alt="Total" class="h-6 w-6" />
-        </div>
-      </div>
-      <div class="col-span-10 flex items-center justify-between">
+    <div class="flex items-center justify-between p-3 border-t border-slate-200">
+      <img src="/total.png" alt="Total" class="h-6 w-6" />
+      <div class="flex flex-col items-end">
         <div class="text-xs uppercase tracking-wide text-slate-500">Total</div>
-        <div class="text-lg font-semibold text-slate-900">{{ summary()?.contributions?.total | currency:'ZAR':'symbol':'1.2-2' }}</div>
+        <div class="text-sm font-semibold text-slate-900">R {{ summary()?.contributions?.total | number:'1.2-2' }}</div>
       </div>
     </div>
   </div>
