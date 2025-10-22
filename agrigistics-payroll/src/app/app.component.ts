@@ -2,11 +2,12 @@ import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { PayrollStore } from './state/payroll.store';
+import { PayrollTableComponent } from './components/payroll-table/payroll-table.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgIf, AsyncPipe],
+  imports: [RouterOutlet, NgIf, AsyncPipe, PayrollTableComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

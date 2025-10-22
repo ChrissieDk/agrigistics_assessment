@@ -15,6 +15,7 @@ export interface EarningItem {
   quantity: number;
   rate: number | null; // unit rate; null indicates N/A or fixed
   currency: CurrencyCode;
+  hasWarning?: boolean;
 }
 
 export interface PayrollSummary {
